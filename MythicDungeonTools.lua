@@ -220,12 +220,12 @@ MDT.scaleMultiplier = {}
 --lvl 4 affix, lvl 7 affix, tyrannical/fortified, seasonal affix
 local affixWeeks = {
     [1] =  {[1]=11,[2]=3,[3]=10,[4]=121}, -->>Bursting, Volcanic, Fortified
-    [2] = {[1]=7,[2]=124,[3]=9,[4]=121}, -->>Bolstering, Storming, Tyrannical
-    [3] = {[1]=123,[2]=12,[3]=10,[4]=121}, -->>Spiteful, Grievous, Fortified
-    [4] =  {[1]=0,[2]=0,[3]=0,[4]=0},
-    [5] =  {[1]=0,[2]=0,[3]=0,[4]=0},
-    [6] =  {[1]=0,[2]=0,[3]=0,[4]=0},
-    [7] =  {[1]=0,[2]=0,[3]=0,[4]=0},
+    [2] =  {[1]=7,[2]=124,[3]=9,[4]=121}, -->>Bolstering, Storming, Tyrannical
+    [3] =  {[1]=123,[2]=12,[3]=10,[4]=121}, -->>Spiteful, Grievous, Fortified
+    [4] =  {[1]=122,[2]=4,[3]=9,[4]=121}, -->>Inspiring, Necrotic, Tyrannical
+    [5] =  {[1]=8,[2]=14,[3]=10,[4]=121}, -->>Sanguine, Quaking, Fortified
+    [6] =  {[1]=6,[2]=13,[3]=9,[4]=121}, -->>Raging, Explosive, Tyrannical
+    [7] =  {[1]=123,[2]=3,[3]=10,[4]=121}, -->>Spiteful, Volcanic, Fortified
     [8] =  {[1]=7,[2]=4,[3]=9,[4]=121},  -->>Bolstering, Necrotic, Tyrannical
     [9] =  {[1]=124,[2]=122,[3]=10,[4]=121},   -->>Storming, Inspiring, Fortified
     [10] = {[1]=11,[2]=13,[3]=9,[4]=121},  -->>Bursting, Explosive, Tyrannical
@@ -3044,6 +3044,30 @@ MDT.zoneIdToDungeonIdx = {
     [1493] = 26,--upper mecha
     [1494] = 26,--upper mecha
     [1497] = 26,--upper mecha
+    [1663] = 30,
+    [1664] = 30,
+    [1665] = 30,
+    [1666] = 35,
+    [1667] = 35,
+    [1668] = 35,
+    [1669] = 31,
+    [1674] = 32,
+    [1675] = 33,
+    [1676] = 33,
+    [1677] = 29,
+    [1678] = 29,
+    [1679] = 29,
+    [1680] = 29,
+    [1683] = 36,
+    [1684] = 36,
+    [1685] = 36,
+    [1686] = 36,
+    [1687] = 36,
+    [1692] = 34,
+    [1693] = 34,
+    [1694] = 34,
+    [1695] = 34,
+    [1697] = 32,
 }
 local lastUpdatedDungeonIdx
 function MDT:CheckCurrentZone(init)
@@ -4966,6 +4990,8 @@ function initFrames()
     for dungeonIdx,dungeon in pairs(db.dungeonImport) do
         MDT.dungeonEnemies[dungeonIdx] = dungeon
     end
+
+    if db.MDI then db.MDI.enabled = false end
 
     db.nonFullscreenScale = db.nonFullscreenScale or 1
     if not db.maximized then db.scale = db.nonFullscreenScale end
